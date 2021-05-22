@@ -4,6 +4,12 @@
         <name>testedeapi.Api</name>
     </assembly>
     <members>
+        <member name="M:testedeapi.Api.Controllers.HealthController.Health">
+            <summary>
+            Testar se a API está funcionando
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:testedeapi.Api.Controllers.PacienteController.List(System.Int32,System.Int32,System.Boolean,System.Nullable{System.Boolean},System.String)">
             <summary>
             Lista pacientes
