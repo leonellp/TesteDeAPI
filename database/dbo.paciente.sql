@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Table]
+﻿CREATE TABLE [dbo].[paciente]
 (
 	[Idpaciente] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [Nome] VARCHAR(200) NOT NULL, 
