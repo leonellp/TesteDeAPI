@@ -5,6 +5,11 @@ using testedeapi.Business.Abstractions.DTO;
 using testedeapi.Business.Abstractions.Interfaces;
 
 namespace testedeapi.Api.Controllers {
+
+
+    /// <summary>
+    /// Pacites
+    /// </summary>
     [ApiController]
     [Route("/v1/[controller]")]
     public class PacienteController : ControllerBase {
@@ -14,6 +19,16 @@ namespace testedeapi.Api.Controllers {
             this.service = service;
         }
 
+
+        /// <summary>
+        /// Lista pacientes
+        /// </summary>
+        /// <param name="skip">aa</param>
+        /// <param name="pageSize">aaa</param>
+        /// <param name="count"></param>
+        /// <param name="inativos"></param>
+        /// <param name="pesquisa"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("")]
         public Paginacao<PacienteDTO> List(

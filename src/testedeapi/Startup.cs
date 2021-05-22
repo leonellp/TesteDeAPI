@@ -13,6 +13,11 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using testedeapi.Api.Abstractions.DTO;
 using testedeapi.Validations;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
+using System;
+using Serilog;
 
 namespace testedeapi.Api {
     public class Startup {
@@ -24,7 +29,7 @@ namespace testedeapi.Api {
         }
 
         public IConfiguration Configuration { get; }
-                
+
         public void ConfigureServices(IServiceCollection services) {
             services.AddAutoMapper(typeof(Mappers));
 
@@ -37,11 +42,16 @@ namespace testedeapi.Api {
             services.AddRazorPages();
 
             services.AddSwaggerGen(options => {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {
+
+                options.SwaggerDoc("v1", new OpenApiInfo {
                     Title = "Teste de API C#",
                     Version = "v1",
                     Description = "Teste de contrução de API em C#",
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
 
             services.AddMvc()
@@ -56,6 +66,7 @@ namespace testedeapi.Api {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -68,7 +79,9 @@ namespace testedeapi.Api {
                 endpoints.MapControllers();
             });
 
-            app.UseSwagger();
+            app.UseSwagger(c => {
+                c.SerializeAsV2 = true;
+            });
 
             app.UseSwaggerUI(options => {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Teste de API");

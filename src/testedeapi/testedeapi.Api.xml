@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>testedeapi.Api</name>
+    </assembly>
+    <members>
+        <member name="T:testedeapi.Api.Controllers.PacienteController">
+            <summary>
+            Pacites
+            </summary>
+        </member>
+        <member name="M:testedeapi.Api.Controllers.PacienteController.List(System.Int32,System.Int32,System.Boolean,System.Nullable{System.Boolean},System.String)">
+            <summary>
+            Lista pacientes
+            </summary>
+            <param name="skip">aa</param>
+            <param name="pageSize">aaa</param>
+            <param name="count"></param>
+            <param name="inativos"></param>
+            <param name="pesquisa"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
